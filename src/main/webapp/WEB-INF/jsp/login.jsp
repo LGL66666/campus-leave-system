@@ -18,16 +18,14 @@
             <label>用户名</label>
             <input name="username" required autofocus>
         </div>
-        <br>
         <div class="field">
             <label>密码</label>
             <input name="password" type="password" required>
         </div>
-        <br>
-        <button class="btn" style="width:100%;" type="submit">登录系统</button>
+        <button class="btn" type="submit">登录系统</button>
     </form>
-    <p class="help" style="margin-top:18px;">
-        演示账号：admin/admin123，t_zhang/123456，s_wang/123456
+    <p class="help">
+        演示账号：admin / admin123，t_zhang / 123456，s_wang / 123456
     </p>
 </div>
 </body>

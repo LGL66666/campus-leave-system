@@ -24,7 +24,7 @@
     <div>
         <%= currentUser == null ? "" : currentUser.getRealName() %>
         <span class="help"><%= currentUser == null ? "" : ParamUtil.roleText(currentUser.getRole()) %></span>
-        &nbsp;|&nbsp;<a style="color:#fff;" href="<%= ctx %>/logout">退出</a>
+        &nbsp;|&nbsp;<a href="<%= ctx %>/logout">退出</a>
     </div>
 </header>
 <div class="layout">
