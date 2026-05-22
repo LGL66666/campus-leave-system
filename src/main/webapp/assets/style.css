@@ -1,39 +1,45 @@
 /* ============================================================
    高校在线请假管理系统 — Campus Leave System
-   设计方向：Nature-inspired + Warm functional
-   绿意校园色调，亲和高效，去 AI 感
+   设计方向：Warm Scholar / 暖学者
+   暖灰褐主色，象牙白背景，学术人文气质，去 AI 感
    ============================================================ */
 
 /* ----- CSS Variables ----- */
 :root {
-    --green: #3D6B4F;
-    --green-dark: #2D5240;
-    --green-light: #EDF4E8;
-    --olive: #7B8F6A;
-    --warm: #D4845A;
-    --warm-dark: #B87048;
+    --primary: #8B6B5E;
+    --primary-dark: #6F5549;
+    --primary-bg: #F5EFEA;
 
-    --bg: #F7F4ED;
-    --surface: #FFFDF9;
-    --text: #2C2416;
-    --muted: #8B8478;
-    --faint: #B5AFA5;
-    --border: #E6E0D4;
-    --border-light: #F0EBE0;
+    --topbar-bg: #343236;
 
-    --amber: #B8753E;
+    --bg: #F5F3EE;
+    --surface: #FFFFFF;
+    --text: #2D2820;
+    --muted: #8C8378;
+    --faint: #B5AEA3;
+    --border: #E7E2D8;
+    --border-light: #F0EBE3;
+
+    --accent-amber: #B8914E;
+    --accent-teal: #658A7C;
+    --accent-rust: #C5705A;
+    --accent-slate: #6D7B8C;
+
+    --amber: #B07A3E;
     --amber-bg: #FFF5EA;
+    --approved: #5B8870;
+    --approved-bg: #EEF5F0;
     --red: #C4665A;
     --red-bg: #FDF2F0;
-    --info: #5B7FA5;
-    --info-bg: #F2F6FA;
+    --info: #6D7B8C;
+    --info-bg: #F2F5F7;
 
     --radius-sm: 6px;
     --radius: 10px;
     --radius-lg: 16px;
-    --shadow-sm: 0 1px 3px rgba(44, 36, 22, 0.05);
-    --shadow: 0 2px 12px rgba(44, 36, 22, 0.06);
-    --shadow-lg: 0 8px 32px rgba(44, 36, 22, 0.09);
+    --shadow-sm: 0 1px 3px rgba(45, 40, 32, 0.05);
+    --shadow: 0 2px 12px rgba(45, 40, 32, 0.06);
+    --shadow-lg: 0 8px 32px rgba(45, 40, 32, 0.09);
 }
 
 /* ----- Reset & Base ----- */
@@ -54,13 +60,13 @@ body {
 }
 
 a {
-    color: var(--green);
+    color: var(--primary);
     text-decoration: none;
     transition: color 0.2s;
 }
 
 a:hover {
-    color: var(--green-dark);
+    color: var(--primary-dark);
 }
 
 /* ----- Topbar ----- */
@@ -71,8 +77,8 @@ a:hover {
     justify-content: space-between;
     padding: 0 28px;
     color: #ffffff;
-    background: var(--green-dark);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    background: var(--topbar-bg);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10);
     position: relative;
     z-index: 30;
 }
@@ -121,15 +127,15 @@ a:hover {
 }
 
 .sidebar a:hover {
-    color: var(--green);
-    background: var(--green-light);
+    color: var(--primary);
+    background: var(--primary-bg);
     text-decoration: none;
 }
 
 .sidebar a.active {
     color: #ffffff;
-    background: var(--green);
-    box-shadow: 0 2px 6px rgba(61, 107, 79, 0.25);
+    background: var(--primary);
+    box-shadow: 0 2px 6px rgba(139, 107, 94, 0.30);
 }
 
 /* ----- Content ----- */
@@ -155,7 +161,7 @@ a:hover {
     left: 0;
     width: 48px;
     height: 2px;
-    background: var(--green);
+    background: var(--primary);
     border-radius: 1px;
 }
 
@@ -207,21 +213,10 @@ a:hover {
     border-left: 3px solid transparent;
 }
 
-.metric:nth-child(1) {
-    border-left-color: var(--warm);
-}
-
-.metric:nth-child(2) {
-    border-left-color: var(--green);
-}
-
-.metric:nth-child(3) {
-    border-left-color: var(--red);
-}
-
-.metric:nth-child(4) {
-    border-left-color: var(--olive);
-}
+.metric:nth-child(1) { border-left-color: var(--accent-amber); }
+.metric:nth-child(2) { border-left-color: var(--accent-teal); }
+.metric:nth-child(3) { border-left-color: var(--accent-rust); }
+.metric:nth-child(4) { border-left-color: var(--accent-slate); }
 
 .metric:hover {
     box-shadow: var(--shadow);
@@ -262,7 +257,7 @@ td {
 
 th {
     color: var(--muted);
-    background: #FAF8F3;
+    background: #F8F6F2;
     font-weight: 600;
     font-size: 13px;
     text-transform: none;
@@ -270,7 +265,7 @@ th {
 }
 
 tbody tr:hover {
-    background: #FDFBF6;
+    background: #F9F7F3;
 }
 
 tbody tr:last-child td {
@@ -320,12 +315,12 @@ input:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(61, 107, 79, 0.12);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 107, 94, 0.12);
 }
 
 input[readonly] {
-    background: #F5F2EB;
+    background: #F8F6F3;
     color: var(--muted);
     cursor: default;
 }
@@ -344,7 +339,7 @@ textarea {
 select {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B8478' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238C8378' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     padding-right: 36px;
@@ -361,7 +356,7 @@ select {
     border: 1px solid transparent;
     border-radius: var(--radius-sm);
     color: #ffffff;
-    background: var(--green);
+    background: var(--primary);
     cursor: pointer;
     font: inherit;
     font-size: 14px;
@@ -372,8 +367,8 @@ select {
 }
 
 .btn:hover {
-    background: var(--green-dark);
-    box-shadow: 0 2px 8px rgba(45, 82, 64, 0.2);
+    background: var(--primary-dark);
+    box-shadow: 0 2px 8px rgba(139, 107, 94, 0.25);
     text-decoration: none;
     color: #ffffff;
 }
@@ -383,7 +378,7 @@ select {
 }
 
 .btn:focus-visible {
-    outline: 2px solid var(--green);
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
 
@@ -394,7 +389,7 @@ select {
 }
 
 .btn.secondary:hover {
-    background: #F5F2EB;
+    background: var(--bg);
     box-shadow: none;
     color: var(--text);
 }
@@ -409,12 +404,12 @@ select {
 }
 
 .btn.success {
-    background: var(--green);
+    background: var(--approved);
 }
 
 .btn.success:hover {
-    background: var(--green-dark);
-    box-shadow: 0 2px 8px rgba(45, 82, 64, 0.25);
+    background: #4A7560;
+    box-shadow: 0 2px 8px rgba(91, 136, 112, 0.25);
 }
 
 /* ----- Actions ----- */
@@ -441,8 +436,8 @@ select {
 }
 
 .badge.approved {
-    color: var(--green);
-    background: var(--green-light);
+    color: var(--approved);
+    background: var(--approved-bg);
 }
 
 .badge.rejected {
@@ -455,9 +450,9 @@ select {
     margin-bottom: 16px;
     padding: 12px 16px;
     border-radius: var(--radius-sm);
-    border: 1px solid #CDD8E8;
-    color: #415E7A;
-    background: #F2F6FA;
+    border: 1px solid #D0D8DF;
+    color: var(--info);
+    background: var(--info-bg);
     font-size: 14px;
 }
 
@@ -481,9 +476,9 @@ select {
     padding: 28px;
     background: var(--bg);
     background-image:
-        radial-gradient(ellipse at 20% 50%, rgba(61, 107, 79, 0.04) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(132, 132, 90, 0.04) 0%, transparent 60%),
-        radial-gradient(ellipse at 50% 80%, rgba(212, 132, 90, 0.03) 0%, transparent 50%);
+        radial-gradient(ellipse at 20% 50%, rgba(139, 107, 94, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(184, 145, 78, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 80%, rgba(109, 123, 140, 0.03) 0%, transparent 50%);
 }
 
 .login-box {
@@ -493,7 +488,7 @@ select {
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
-    border-top: 4px solid var(--green);
+    border-top: 4px solid var(--primary);
 }
 
 .login-box h1 {
